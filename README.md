@@ -45,31 +45,7 @@ The following diagrams are provided in PlantUML format to allow easy rendering a
 
 ### Component Diagram
 
-```plantuml
-@startuml
-package "Client" {
-  [HTTP Client]
-}
-
-package "Elixir Application" {
-  [Plug Router]
-  [Metrics Module]
-  [Health Endpoint]
-  [Background Workers]
-}
-
-package "Monitoring" {
-  [Prometheus]
-  [Grafana]
-}
-
-[HTTP Client] --> [Plug Router]
-[Plug Router] --> [Health Endpoint]
-[Plug Router] --> [Metrics Module]
-[Metrics Module] --> [Prometheus]
-[Prometheus] --> [Grafana]
-@enduml
-```
+<img width="387" height="564" alt="image" src="https://github.com/user-attachments/assets/c97bd902-0f90-493d-844f-e1a4a45adefe" />
 
 ---
 
