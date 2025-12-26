@@ -37,7 +37,7 @@ Client ──HTTP──▶ Plug Router ──▶ OTP Supervision Tree
 
 ---
 
-## UML Diagrams (PlantUML)
+## UML Diagrams
 
 The following diagrams are provided in PlantUML format to allow easy rendering and modification by contributors.
 
@@ -58,37 +58,16 @@ The following diagrams are provided in PlantUML format to allow easy rendering a
 
 ### Request and Metrics Flow
 
-```plantuml
-@startuml
-actor Client
-participant "Plug Router" as Router
-participant "Telemetry" as Telemetry
-participant "Prometheus" as Prometheus
+<img width="435" height="326" alt="image" src="https://github.com/user-attachments/assets/3744c0f1-f263-4c2c-a2d8-ab3a4eb41d98" />
 
-Client -> Router : HTTP request
-Router -> Telemetry : start event
-Router --> Client : HTTP response
-Router -> Telemetry : stop event
-Telemetry -> Prometheus : metrics exposed
-@enduml
-```
 
 ---
 
 ### Deployment Diagram
 
-```plantuml
-@startuml
-node "Linux Host" {
-  component "Elixir Application"
-  component "Prometheus"
-  component "Grafana"
-}
 
-"Elixir Application" --> "Prometheus"
-"Prometheus" --> "Grafana"
-@enduml
-```
+<img width="222" height="336" alt="image" src="https://github.com/user-attachments/assets/bf33e9ff-c0c3-46c6-97b7-9072afeea4ec" />
+
 
 ---
 
