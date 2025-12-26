@@ -51,22 +51,8 @@ The following diagrams are provided in PlantUML format to allow easy rendering a
 
 ### OTP Supervision Tree
 
-```plantuml
-@startuml
-package "Server.Application" {
-  [Main Supervisor]
-  [HTTP Server]
-  [Metrics Exporter]
-  [Worker Supervisor]
-  [Worker]
-}
+<img width="566" height="321" alt="image" src="https://github.com/user-attachments/assets/31ac8de4-2ef8-4b98-9afa-c552f1b988e5" />
 
-[Main Supervisor] --> [HTTP Server]
-[Main Supervisor] --> [Metrics Exporter]
-[Main Supervisor] --> [Worker Supervisor]
-[Worker Supervisor] --> [Worker]
-@enduml
-```
 
 ---
 
