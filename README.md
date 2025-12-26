@@ -1,17 +1,14 @@
 # Elixir Monitoring Server
 
-An **open-source, production-oriented Elixir HTTP server** focused on **reliability, observability, and clean system design**.
-The project demonstrates how to combine **OTP supervision**, **Telemetry**, **Prometheus**, and **Grafana** to build a fault-tolerant and monitorable backend service.
+An **open-source, production-oriented Elixir HTTP server** designed with an explicit focus on **reliability, observability, and clean system architecture**. The project models how modern backend services should be structured when long-running stability, introspection, and operational visibility are first-class concerns.
 
-This repository is suitable for:
+At its core, the system leverages **Elixir and OTP supervision trees** to ensure fault isolation and automatic recovery from failures. Application components such as the HTTP server, metrics exporter, and background workers are supervised independently, allowing the system to remain available even when individual processes crash.
 
-* Learning Elixir/OTP in a realistic setting
-* Studying system monitoring and observability
-* Open-source contribution and extension
-* Portfolio or academic use
+Observability is implemented using **Telemetry** as the instrumentation layer, enabling consistent and low-overhead emission of application and request-level events. These events are translated into **Prometheus-compatible metrics**, which are exposed through a dedicated `/metrics` endpoint. **Grafana** is then used to visualize request rates, latency distributions, error patterns, and overall system health, providing real-time operational insight.
+
+The project emphasizes clarity over abstraction, avoiding unnecessary frameworks while adhering to established backend and infrastructure best practices. Its structure is intentionally modular to allow extension into distributed systems, alerting pipelines, containerized deployments, or orchestration environments. As such, it serves both as a reference implementation and a foundation for more advanced reliability and monitoring-focused systems.
 
 ---
-
 ## Features
 
 * HTTP server using Plug + Cowboy
