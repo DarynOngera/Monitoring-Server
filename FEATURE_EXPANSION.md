@@ -1,5 +1,3 @@
-
-```md
 # Feature Expansion Roadmap
 
 This document outlines planned and potential feature expansions for the Elixir Monitoring Server, with an emphasis on reliability engineering, observability, and distributed system readiness.
