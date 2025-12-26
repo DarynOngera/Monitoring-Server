@@ -1,3 +1,4 @@
+require Logger 
 defmodule Elixirserver.Application do
   use Application
 
@@ -10,6 +11,13 @@ defmodule Elixirserver.Application do
     ]
 
     opts = [strategy: :one_for_one, name: Elixirserver.Supervisor]
-    Supervisor.start_link(children, opts)
+  case  Supervisor.start_link(children, opts) do
+      {:ok, pid} ->
+        Logger.info("Server started on PORT:4000")
+        {:ok, pid}
+
+      error ->
+        error
+  end
   end
 end

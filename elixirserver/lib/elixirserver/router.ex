@@ -1,6 +1,8 @@
+require Logger
 defmodule Elixirserver.Router do 
   use Plug.Router
 
+  plug Plug.Logger, log: :info
   plug :match
   plug Plug.Telemetry, event_prefix: [:server, :http]
   plug :dispatch
