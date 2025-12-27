@@ -131,6 +131,37 @@ http://localhost:4000
 | `/health`  | Service health check |
 | `/metrics` | Prometheus metrics   |
 | `/worker/status` | Worker liveness|
+| `/jobs`(POST) | Submit a background job|
+| `/jobs/stats` | Worker job statistics |
+| `/chaos/crash-worker` | Intentionally crash worker |
+
+---
+
+## Worker Reliability and Chaos Testing 
+The background worker is **supervised and self-healing**.
+When the worker crashes 
+* The supervisor automatically restarts it
+* A new PID is assigned
+* Telemetry emits lifecycle and crash events
+* Prometheus metrics reflect the failure and recovery
+ This allows for validation of **real fault tolerance**, not just happy-path behavior.
+
+---
+## Metrics Overview
+Exposed metrics include:
+* HTTP request count
+* HTTP request duration
+* Worker start count
+* Worker termination count
+* Worker crash count
+* Job received count
+* Job completed count
+  
+These metrics allow precise answers to questions such as:
+* How often does the system fail?
+* Does it recover automatically?
+* Is job throughput stable?
+* Are crashes increasing over time?
 
 ---
 
@@ -150,15 +181,14 @@ scrape_configs:
 * Add Prometheus as a data source
 * Build dashboards using metrics such as request rate, latency, and error counts
 
-<img width="1360" height="610" alt="Screenshot at 2025-12-27 01-05-56" src="https://github.com/user-attachments/assets/9b404611-7d68-40dd-a797-ea1326e98703" />
+Example queries:
 
+`worker_crash_count`
+`rate(worker_job_completed_count[1m])`
+`rate(server_http_request_count[1m])`
 
+<img width="1366" height="612" alt="Screenshot at 2025-12-27 06-16-28" src="https://github.com/user-attachments/assets/fea26da1-40f2-4b10-8b1b-64eac2bcd0c2" />
 
-Example query:
-
-```promql
-rate(http_request_count[1m])
-```
 
 ---
 
