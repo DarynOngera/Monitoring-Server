@@ -13,10 +13,11 @@ The project emphasizes clarity over abstraction, avoiding unnecessary frameworks
 
 * HTTP server using Plug + Cowboy
 * OTP supervision trees for fault tolerance
-* Application and request metrics via Telemetry
+* Supervised background worker with automatic restart
+* Application, request and worker metrics via Telemetry
 * Prometheus-compatible `/metrics` endpoint
 * Grafana-ready metrics
-* Health check endpoint
+* Health and worker health endpoints
 * Modular and extensible architecture
 
 ---
@@ -77,8 +78,8 @@ elixir_monitoring_server/
 │   │   ├── application.ex    # Supervision tree
 │   │   ├── router.ex         # HTTP routing
 │   │   ├── metrics.ex        # Telemetry metrics
-│   │   ├── health.ex         # Health checks
-│   │   └── worker.ex         # Background workers
+│   │   ├── metrics_exporter.ex # Prometheus exporter
+│   │   └── worker.ex         # Supervised background worker
 │   └── server.ex
 ├── config/
 ├── priv/
@@ -129,6 +130,7 @@ http://localhost:4000
 | `/`        | Root endpoint        |
 | `/health`  | Service health check |
 | `/metrics` | Prometheus metrics   |
+| `/worker/status` | Worker liveness|
 
 ---
 
