@@ -35,12 +35,6 @@ Client ──HTTP──▶ Plug Router ──▶ OTP Supervision Tree
 
 ---
 
-## UML Diagrams
-
-The following diagrams are provided in PlantUML format to allow easy rendering and modification by contributors.
-
----
-
 ### Component Diagram
 
 <img width="387" height="564" alt="image" src="https://github.com/user-attachments/assets/c97bd902-0f90-493d-844f-e1a4a45adefe" />
@@ -145,6 +139,9 @@ When the worker crashes
 * Telemetry emits lifecycle and crash events
 * Prometheus metrics reflect the failure and recovery
  This allows for validation of **real fault tolerance**, not just happy-path behavior.
+
+<img width="1355" height="674" alt="Screenshot at 2025-12-27 06-23-12" src="https://github.com/user-attachments/assets/c720036d-2f46-41ac-a864-52581c3e660c" />
+
 
 ---
 ## Metrics Overview
