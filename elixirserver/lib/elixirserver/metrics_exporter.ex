@@ -1,3 +1,4 @@
+require Logger
 defmodule Elixirserver.MetricsExporter do 
   use GenServer
 
@@ -6,7 +7,11 @@ defmodule Elixirserver.MetricsExporter do
   @port 4001 
 
   def start_link(_) do 
-    GenServer.start_link(__MODULE__, [], name: __MODULE__)
+    case GenServer.start_link(__MODULE__, [], name: __MODULE__) do 
+      {:ok, pid} ->
+        Logger.info("Metrics available on http://localhost:4001/metrics")
+        {:ok, pid}
+    end
   end 
 
   @impl true 
