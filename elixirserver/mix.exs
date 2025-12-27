@@ -25,7 +25,9 @@ defmodule Elixirserver.MixProject do
       {:plug_cowboy, "~> 2.7"},
       {:telemetry, "~> 1.2"},
       {:telemetry_metrics, "~> 1.0"},
-      {:telemetry_metrics_prometheus, "~> 1.1"}
+      {:telemetry_metrics_prometheus, "~> 1.1"},
+      {:jason, "~> 1.4"}
+
     ]
   end
 end
